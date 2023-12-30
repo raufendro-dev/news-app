@@ -17,13 +17,12 @@ class fetchAPI {
     NewsAllBloc bloc = BlocProvider.of<NewsAllBloc>(context);
     for (var i = 0; i < decode['articles'].length; i++) {
       list_berita.add(Article(
-          source: decode['articles'][i]['source'],
           author: decode['articles'][i]['author'],
           title: decode['articles'][i]['title'],
           description: decode['articles'][i]['description'],
           url: decode['articles'][i]['url'],
           urlToImage: decode['articles'][i]['urlToImage'],
-          publishedAt: decode['articles'][i]['publishedAt'],
+          publishedAt: DateTime.parse(decode['articles'][i]['publishedAt']),
           content: decode['articles'][i]['content']));
     }
     bloc.emit(list_berita);
@@ -38,13 +37,12 @@ class fetchAPI {
     NewsSportBloc bloc = BlocProvider.of<NewsSportBloc>(context);
     for (var i = 0; i < decode['articles'].length; i++) {
       list_berita.add(Article(
-          source: decode['articles'][i]['source'],
           author: decode['articles'][i]['author'],
           title: decode['articles'][i]['title'],
           description: decode['articles'][i]['description'],
           url: decode['articles'][i]['url'],
           urlToImage: decode['articles'][i]['urlToImage'],
-          publishedAt: decode['articles'][i]['publishedAt'],
+          publishedAt: DateTime.parse(decode['articles'][i]['publishedAt']),
           content: decode['articles'][i]['content']));
     }
     return list_berita;
@@ -58,13 +56,12 @@ class fetchAPI {
     NewsBusinessBloc bloc = BlocProvider.of<NewsBusinessBloc>(context);
     for (var i = 0; i < decode['articles'].length; i++) {
       list_berita.add(Article(
-          source: decode['articles'][i]['source'],
           author: decode['articles'][i]['author'],
           title: decode['articles'][i]['title'],
           description: decode['articles'][i]['description'],
           url: decode['articles'][i]['url'],
           urlToImage: decode['articles'][i]['urlToImage'],
-          publishedAt: decode['articles'][i]['publishedAt'],
+          publishedAt: DateTime.parse(decode['articles'][i]['publishedAt']),
           content: decode['articles'][i]['content']));
     }
     return list_berita;

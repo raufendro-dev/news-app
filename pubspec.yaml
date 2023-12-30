@@ -35,6 +35,8 @@ dependencies:
   flutter_bloc: ^8.1.3
   go_router: ^13.0.0
   http: ^1.1.2
+  timeago: ^3.6.0
+  webview_flutter: ^4.0.2
 
 dev_dependencies:
   flutter_lints: ^2.0.0

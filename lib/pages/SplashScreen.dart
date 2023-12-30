@@ -1,5 +1,6 @@
 import "package:flutter/material.dart";
 import "package:go_router/go_router.dart";
+import "package:news_app/controller/news_controller.dart";
 
 class SplashScreen extends StatefulWidget {
   const SplashScreen({Key? key}) : super(key: key);
@@ -10,7 +11,9 @@ class SplashScreen extends StatefulWidget {
 
 class _SplashScreenState extends State<SplashScreen> {
   void cek() async {
-    await Future.delayed(Duration(seconds: 3));
+    await fetchAPI().fetchNews_all(context);
+    await fetchAPI().fetchNews_business(context);
+    await fetchAPI().fetchNews_sport(context);
     context.go("/home");
   }
 
