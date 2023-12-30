@@ -1,9 +1,50 @@
+import 'package:flutter/widgets.dart';
 import 'package:http/http.dart' as http;
+import 'package:news_app/bloc/bloc/news_bloc.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'dart:convert';
 import '../model/news_model.dart';
+import '../config/api/api.dart';
 
 class fetchAPI {
-  // Future <List<Article>>fetchNews()async{
+  Future<List<Article>> fetchNews_all(BuildContext context) async {
+    String url = API.link;
+    var response = await http.get(Uri.parse(url));
+    var decode = json.decode(response.body);
+    List<Article> list_berita = [];
+    NewsBloc bloc = BlocProvider.of<NewsBloc>(context);
+    for (var i = 0; i < decode['articles'].length; i++) {
+      list_berita.add(Article(
+          source: decode['articles'][i]['source'],
+          author: decode['articles'][i]['author'],
+          title: decode['articles'][i]['title'],
+          description: decode['articles'][i]['description'],
+          url: decode['articles'][i]['url'],
+          urlToImage: decode['articles'][i]['urlToImage'],
+          publishedAt: decode['articles'][i]['publishedAt'],
+          content: decode['articles'][i]['content']));
+    }
+    return list_berita;
+  }
 
-  // }
+  Future<List<Article>> fetchNews_category(
+      BuildContext context, String category) async {
+    String url = API.link + "&category=$category";
+    var response = await http.get(Uri.parse(url));
+    var decode = json.decode(response.body);
+    List<Article> list_berita = [];
+    NewsBloc bloc = BlocProvider.of<NewsBloc>(context);
+    for (var i = 0; i < decode['articles'].length; i++) {
+      list_berita.add(Article(
+          source: decode['articles'][i]['source'],
+          author: decode['articles'][i]['author'],
+          title: decode['articles'][i]['title'],
+          description: decode['articles'][i]['description'],
+          url: decode['articles'][i]['url'],
+          urlToImage: decode['articles'][i]['urlToImage'],
+          publishedAt: decode['articles'][i]['publishedAt'],
+          content: decode['articles'][i]['content']));
+    }
+    return list_berita;
+  }
 }
