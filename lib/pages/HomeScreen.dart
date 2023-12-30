@@ -41,6 +41,7 @@ class _HomeScreenState extends State<HomeScreen>
           child: TabBarView(
             children: _tabBarView,
             controller: _tabController,
+            physics: NeverScrollableScrollPhysics(),
           ),
           onWillPop: _onWillPop),
       bottomNavigationBar: BottomNavigationBar(

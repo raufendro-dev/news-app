@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:webview_flutter/webview_flutter.dart';
+import 'package:go_router/go_router.dart';
 
 class NewsViewScreen extends StatelessWidget {
   NewsViewScreen({required this.link});
@@ -29,7 +30,14 @@ class NewsViewScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     print(link);
     return Scaffold(
-      body: WebViewWidget(controller: controller),
+      appBar: AppBar(
+          leading: IconButton(
+            icon: Icon(Icons.arrow_back, color: Colors.black),
+            onPressed: () => context.pop(),
+          ),
+          backgroundColor: Colors.white,
+          title: Text("Read News")),
+      body: SafeArea(child: WebViewWidget(controller: controller)),
     );
   }
 }
