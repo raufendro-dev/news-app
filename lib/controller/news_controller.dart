@@ -1,6 +1,7 @@
 import 'package:flutter/widgets.dart';
 import 'package:http/http.dart' as http;
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:news_app/bloc/news_business_bloc.dart';
 import 'dart:convert';
 import '../model/news_model.dart';
 import '../config/api/api.dart';
@@ -25,6 +26,7 @@ class fetchAPI {
           publishedAt: decode['articles'][i]['publishedAt'],
           content: decode['articles'][i]['content']));
     }
+    bloc.emit(list_berita);
     return list_berita;
   }
 
@@ -53,7 +55,7 @@ class fetchAPI {
     var response = await http.get(Uri.parse(url));
     var decode = json.decode(response.body);
     List<Article> list_berita = [];
-    NewsSportBloc bloc = BlocProvider.of<NewsSportBloc>(context);
+    NewsBusinessBloc bloc = BlocProvider.of<NewsBusinessBloc>(context);
     for (var i = 0; i < decode['articles'].length; i++) {
       list_berita.add(Article(
           source: decode['articles'][i]['source'],

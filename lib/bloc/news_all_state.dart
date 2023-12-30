@@ -1,6 +1,9 @@
 part of 'news_all_bloc.dart';
 
 @immutable
-sealed class NewsAllState {}
+class NewsAllState {}
 
-final class NewsAllInitial extends NewsAllState {}
+final class NewsAllInitial extends NewsAllState {
+  final List<Article> news;
+  NewsAllInitial({required this.news});
+}
