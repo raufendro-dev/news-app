@@ -47,6 +47,9 @@ class _SearchScreenState extends State<SearchScreen> {
                       controller: searchController,
                       decoration: new InputDecoration.collapsed(
                           hintText: 'Search here...'),
+                      onSubmitted: (value) {
+                        SearchNews();
+                      },
                     ),
                   ),
                   IconButton(
