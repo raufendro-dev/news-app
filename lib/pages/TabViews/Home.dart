@@ -39,53 +39,65 @@ class _HomeState extends State<Home> {
                   child: ListView.builder(
                     itemCount: state.length,
                     itemBuilder: (context, index) {
-                      return Padding(
-                        padding: const EdgeInsets.symmetric(
-                            horizontal: 20, vertical: 10),
-                        child: InkWell(
-                          onTap: () {
-                            print(state[index].url);
-                            context.push('/newsview', extra: state[index].url);
-                          },
-                          child: Container(
-                            child: Row(
-                              crossAxisAlignment: CrossAxisAlignment.start,
-                              mainAxisAlignment: MainAxisAlignment.start,
-                              children: [
-                                ClipRRect(
-                                  borderRadius: BorderRadius.circular(15),
-                                  child: Image.network(
-                                    state[index].urlToImage,
-                                    width: 140,
+                      if (state[index].url != null) {
+                        return Padding(
+                          padding: const EdgeInsets.symmetric(
+                              horizontal: 20, vertical: 10),
+                          child: GestureDetector(
+                            onTap: () {
+                              print(state[index].url);
+                              context.push('/newsview',
+                                  extra: state[index].url);
+                            },
+                            child: Container(
+                              child: Row(
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                mainAxisAlignment: MainAxisAlignment.start,
+                                children: [
+                                  ClipRRect(
+                                      borderRadius: BorderRadius.circular(15),
+                                      child: state[index].urlToImage != null
+                                          ? Image.network(
+                                              state[index]
+                                                  .urlToImage
+                                                  .toString(),
+                                              width: 140,
+                                            )
+                                          : Container(
+                                              width: 140,
+                                              child: Center(
+                                                  child: Text("No Image")),
+                                            )),
+                                  SizedBox(
+                                    width: 10,
                                   ),
-                                ),
-                                SizedBox(
-                                  width: 10,
-                                ),
-                                Column(
-                                  crossAxisAlignment: CrossAxisAlignment.start,
-                                  children: [
-                                    Container(
-                                      width: 180,
-                                      child: Flexible(
-                                        child: Text(
-                                          state[index].title.toString(),
-                                          style: TextStyle(
-                                              fontWeight: FontWeight.bold),
+                                  Column(
+                                    crossAxisAlignment:
+                                        CrossAxisAlignment.start,
+                                    children: [
+                                      Container(
+                                        width: 180,
+                                        child: Flexible(
+                                          child: Text(
+                                            state[index].title.toString(),
+                                            style: TextStyle(
+                                                fontWeight: FontWeight.bold),
+                                          ),
                                         ),
                                       ),
-                                    ),
-                                    Text(
-                                      timeago.format(state[index].publishedAt),
-                                      style: TextStyle(color: Colors.grey),
-                                    )
-                                  ],
-                                )
-                              ],
+                                      Text(
+                                        timeago
+                                            .format(state[index].publishedAt),
+                                        style: TextStyle(color: Colors.grey),
+                                      )
+                                    ],
+                                  )
+                                ],
+                              ),
                             ),
                           ),
-                        ),
-                      );
+                        );
+                      }
                     },
                   ),
                 );

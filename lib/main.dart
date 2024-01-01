@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:news_app/bloc/news_all_bloc.dart';
 import 'package:news_app/bloc/news_business_bloc.dart';
+import 'package:news_app/bloc/news_health_bloc.dart';
+import 'package:news_app/bloc/news_politics_bloc.dart';
 import 'package:news_app/bloc/news_sport_bloc.dart';
 import "config/route/route.dart";
 
@@ -18,8 +20,10 @@ class MyApp extends StatelessWidget {
     return MultiBlocProvider(
       providers: [
         BlocProvider(create: (context) => NewsAllBloc()),
+        BlocProvider(create: (context) => NewsHealthBloc()),
         BlocProvider(create: (context) => NewsSportBloc()),
         BlocProvider(create: (context) => NewsBusinessBloc()),
+        BlocProvider(create: (context) => NewsPoliticsBloc()),
       ],
       child: MaterialApp.router(
         debugShowCheckedModeBanner: false,

@@ -2,6 +2,8 @@ import 'package:flutter/widgets.dart';
 import 'package:http/http.dart' as http;
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:news_app/bloc/news_business_bloc.dart';
+import 'package:news_app/bloc/news_health_bloc.dart';
+import 'package:news_app/bloc/news_politics_bloc.dart';
 import 'dart:convert';
 import '../model/news_model.dart';
 import '../config/api/api.dart';
@@ -15,6 +17,30 @@ class fetchAPI {
     var decode = json.decode(response.body);
     List<Article> list_berita = [];
     NewsAllBloc bloc = BlocProvider.of<NewsAllBloc>(context);
+    for (var i = 0; i < decode['articles'].length; i++) {
+      list_berita.add(Article(
+          author: decode['articles'][i]['author'],
+          title: decode['articles'][i]['title'],
+          description: decode['articles'][i]['description'],
+          url: decode['articles'][i]['url'],
+          urlToImage: decode['articles'][i]['urlToImage'],
+          publishedAt: DateTime.parse(decode['articles'][i]['publishedAt']),
+          content: decode['articles'][i]['content']));
+    }
+    bloc.emit(list_berita);
+    return list_berita;
+  }
+
+  Future<List<Article>> fetchNews_health(BuildContext context) async {
+    String url = API.link + "&category=health";
+
+    //debug_print
+    print(url);
+
+    var response = await http.get(Uri.parse(url));
+    var decode = json.decode(response.body);
+    List<Article> list_berita = [];
+    NewsHealthBloc bloc = BlocProvider.of<NewsHealthBloc>(context);
     for (var i = 0; i < decode['articles'].length; i++) {
       list_berita.add(Article(
           author: decode['articles'][i]['author'],
@@ -45,6 +71,7 @@ class fetchAPI {
           publishedAt: DateTime.parse(decode['articles'][i]['publishedAt']),
           content: decode['articles'][i]['content']));
     }
+    bloc.emit(list_berita);
     return list_berita;
   }
 
@@ -64,6 +91,31 @@ class fetchAPI {
           publishedAt: DateTime.parse(decode['articles'][i]['publishedAt']),
           content: decode['articles'][i]['content']));
     }
+    bloc.emit(list_berita);
+    return list_berita;
+  }
+
+  Future<List<Article>> fetchNews_politics(BuildContext context) async {
+    String url = API.link + "&category=politics";
+
+    //debug_print
+    print(url);
+
+    var response = await http.get(Uri.parse(url));
+    var decode = json.decode(response.body);
+    List<Article> list_berita = [];
+    NewsPoliticsBloc bloc = BlocProvider.of<NewsPoliticsBloc>(context);
+    for (var i = 0; i < decode['articles'].length; i++) {
+      list_berita.add(Article(
+          author: decode['articles'][i]['author'],
+          title: decode['articles'][i]['title'],
+          description: decode['articles'][i]['description'],
+          url: decode['articles'][i]['url'],
+          urlToImage: decode['articles'][i]['urlToImage'],
+          publishedAt: DateTime.parse(decode['articles'][i]['publishedAt']),
+          content: decode['articles'][i]['content']));
+    }
+    bloc.emit(list_berita);
     return list_berita;
   }
 }

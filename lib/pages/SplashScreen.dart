@@ -14,6 +14,8 @@ class _SplashScreenState extends State<SplashScreen> {
     await fetchAPI().fetchNews_all(context);
     await fetchAPI().fetchNews_business(context);
     await fetchAPI().fetchNews_sport(context);
+    await fetchAPI().fetchNews_health(context);
+    await fetchAPI().fetchNews_politics(context);
     context.go("/home");
   }
 
@@ -27,7 +29,11 @@ class _SplashScreenState extends State<SplashScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       body: Center(
-        child: Image.asset("assets/img/splash.png"),
+        child: Image.asset(
+          "assets/img/splash.png",
+          width: 200,
+          height: 200,
+        ),
       ),
     );
   }
