@@ -1,6 +1,5 @@
 # News App
 
-News App adalah aplikasi kumpulan berita. Aplikasi ini dibuat dengan Flutter dan data didapatkan dari NewsAPI https://newsapi.org/ 
 News App is a news aggregation app. The app is built with Flutter and data is fetched from NewsAPI https://newsapi.org/.
 
 
@@ -10,7 +9,7 @@ Breaking News (Home Screen) ✅
 Category News (Health, Sport, Business, Politics)
 Search News
 
-<img src="https://raw.githubusercontent.com/raufendro-dev/news-app/main/newsapp.gif" width="480" height="600">
+<img src="https://raw.githubusercontent.com/raufendro-dev/news-app/main/newsapp.gif" width="480" height="500">
 
 
 ### Notes
