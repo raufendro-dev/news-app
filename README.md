@@ -5,9 +5,9 @@ News App is a news aggregation app. The app is built with Flutter and data is fe
 
 ## Features 
 
-Breaking News (Home Screen) ✅
-Category News (Health, Sport, Business, Politics)
-Search News
+- Breaking News (Home Screen) ✅
+- Category News (Health, Sport, Business, Politics) ✅
+- Search News ✅
 
 <img src="https://raw.githubusercontent.com/raufendro-dev/news-app/main/newsapp.gif" width="320" height="640">
 
