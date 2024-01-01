@@ -1,4 +1,5 @@
 import "package:flutter/material.dart";
+import "package:go_router/go_router.dart";
 import "package:news_app/pages/TabCategory/Health.dart";
 import "package:news_app/pages/TabCategory/Politics.dart";
 import "../TabCategory/Sport.dart";
@@ -39,7 +40,11 @@ class _DiscoverState extends State<Discover> with TickerProviderStateMixin {
                   "Discover",
                   style: TextStyle(fontWeight: FontWeight.bold, fontSize: 28),
                 ),
-                IconButton(onPressed: () {}, icon: Icon(Icons.search))
+                IconButton(
+                    onPressed: () {
+                      context.push('/search');
+                    },
+                    icon: Icon(Icons.search))
               ],
             ),
           ),

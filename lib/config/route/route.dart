@@ -1,5 +1,6 @@
 import "package:go_router/go_router.dart";
 import 'package:news_app/pages/NewsViewScreen.dart';
+import 'package:news_app/pages/SearchScreen.dart';
 import '../../pages/SplashScreen.dart';
 import '../../pages/HomeScreen.dart';
 
@@ -13,6 +14,10 @@ class RouterX {
       GoRoute(
         path: '/home',
         builder: (context, state) => const HomeScreen(),
+      ),
+      GoRoute(
+        path: '/search',
+        builder: (context, state) => const SearchScreen(),
       ),
       GoRoute(
           path: '/newsview',

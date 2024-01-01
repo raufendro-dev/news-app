@@ -4,6 +4,7 @@ import 'package:news_app/bloc/news_all_bloc.dart';
 import 'package:news_app/bloc/news_business_bloc.dart';
 import 'package:news_app/bloc/news_health_bloc.dart';
 import 'package:news_app/bloc/news_politics_bloc.dart';
+import 'package:news_app/bloc/news_search_bloc.dart';
 import 'package:news_app/bloc/news_sport_bloc.dart';
 import "config/route/route.dart";
 
@@ -24,6 +25,7 @@ class MyApp extends StatelessWidget {
         BlocProvider(create: (context) => NewsSportBloc()),
         BlocProvider(create: (context) => NewsBusinessBloc()),
         BlocProvider(create: (context) => NewsPoliticsBloc()),
+        BlocProvider(create: (context) => NewsSearchBloc()),
       ],
       child: MaterialApp.router(
         debugShowCheckedModeBanner: false,

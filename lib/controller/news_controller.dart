@@ -4,6 +4,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:news_app/bloc/news_business_bloc.dart';
 import 'package:news_app/bloc/news_health_bloc.dart';
 import 'package:news_app/bloc/news_politics_bloc.dart';
+import 'package:news_app/bloc/news_search_bloc.dart';
 import 'dart:convert';
 import '../model/news_model.dart';
 import '../config/api/api.dart';
@@ -17,6 +18,27 @@ class fetchAPI {
     var decode = json.decode(response.body);
     List<Article> list_berita = [];
     NewsAllBloc bloc = BlocProvider.of<NewsAllBloc>(context);
+    for (var i = 0; i < decode['articles'].length; i++) {
+      list_berita.add(Article(
+          author: decode['articles'][i]['author'],
+          title: decode['articles'][i]['title'],
+          description: decode['articles'][i]['description'],
+          url: decode['articles'][i]['url'],
+          urlToImage: decode['articles'][i]['urlToImage'],
+          publishedAt: DateTime.parse(decode['articles'][i]['publishedAt']),
+          content: decode['articles'][i]['content']));
+    }
+    bloc.emit(list_berita);
+    return list_berita;
+  }
+
+  Future<List<Article>> fetchNews_search(
+      BuildContext context, String search) async {
+    String url = API.link + "&q=$search";
+    var response = await http.get(Uri.parse(url));
+    var decode = json.decode(response.body);
+    List<Article> list_berita = [];
+    NewsSearchBloc bloc = BlocProvider.of<NewsSearchBloc>(context);
     for (var i = 0; i < decode['articles'].length; i++) {
       list_berita.add(Article(
           author: decode['articles'][i]['author'],
