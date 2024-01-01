@@ -22,20 +22,20 @@ class _HomeState extends State<Home> {
   Widget build(BuildContext context) {
     return Scaffold(
       body: SafeArea(
-        child: RefreshIndicator(
-          onRefresh: () => _refreshData(),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              Padding(
-                padding: const EdgeInsets.only(left: 12, top: 10, bottom: 12),
-                child: Text(
-                  "Breaking News",
-                  style: TextStyle(fontWeight: FontWeight.bold, fontSize: 28),
-                ),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Padding(
+              padding: const EdgeInsets.only(left: 12, top: 10, bottom: 12),
+              child: Text(
+                "Breaking News",
+                style: TextStyle(fontWeight: FontWeight.bold, fontSize: 28),
               ),
-              BlocBuilder<NewsAllBloc, List>(builder: (context, state) {
-                return Expanded(
+            ),
+            BlocBuilder<NewsAllBloc, List>(builder: (context, state) {
+              return Expanded(
+                child: RefreshIndicator(
+                  onRefresh: () => _refreshData(),
                   child: ListView.builder(
                     itemCount: state.length,
                     itemBuilder: (context, index) {
@@ -100,10 +100,10 @@ class _HomeState extends State<Home> {
                       }
                     },
                   ),
-                );
-              }),
-            ],
-          ),
+                ),
+              );
+            }),
+          ],
         ),
       ),
     );

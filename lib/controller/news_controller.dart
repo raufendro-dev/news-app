@@ -33,10 +33,6 @@ class fetchAPI {
 
   Future<List<Article>> fetchNews_health(BuildContext context) async {
     String url = API.link + "&category=health";
-
-    //debug_print
-    print(url);
-
     var response = await http.get(Uri.parse(url));
     var decode = json.decode(response.body);
     List<Article> list_berita = [];
@@ -97,10 +93,6 @@ class fetchAPI {
 
   Future<List<Article>> fetchNews_politics(BuildContext context) async {
     String url = API.link + "&category=politics";
-
-    //debug_print
-    print(url);
-
     var response = await http.get(Uri.parse(url));
     var decode = json.decode(response.body);
     List<Article> list_berita = [];
