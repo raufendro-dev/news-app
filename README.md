@@ -14,4 +14,6 @@ Search News
 
 ### Notes
 - I make this app with Flutter 3.16.5
+- Because My Account on NewsAPI is Free Version, The API can only 50 request/24 Hour
+- Give me star on this repo please :D
 
