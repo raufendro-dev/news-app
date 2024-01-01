@@ -10,7 +10,7 @@ Breaking News (Home Screen) ✅
 Category News (Health, Sport, Business, Politics)
 Search News
 
-![Alt Text](https://raw.githubusercontent.com/raufendro-dev/news-app/main/newsapp.gif)
+<img src="https://raw.githubusercontent.com/raufendro-dev/news-app/main/newsapp.gif" width="250" height="250">
 
 
 ### Notes
